@@ -31,16 +31,33 @@ app.post('/users', function (req, res) {
     res.send('ok!')
 })
 
-app.patch('/users/update/:id',function (req, res){
-    const name = req.body.name;
-    users[req.params.id] = name;
-    return res.json(users[req.params.id]);
+app.put('/users/:id', function (req, res) {
+    const id = req.params.id
+    users[id] = req.body;
+    res.send(users[id])
 })
+/* /* app.patch('/users/update/:id',function (req, res){
+    const name = req.body.name;
+    users[req.params.id].name = name; 
+   /*  users = [{a: 1}, {b:2}]
+    const userA = users[0]
+    users[0].a = "Maria"
+    users = [{a: "Maria"}, {b:2}]
+    const userB = {
+        name: "Thiago",
+        age: 34
+    }
+    userB.name */ 
+/*     return res.json(users[req.params.id]);
+}) */ 
 
-app.delete('/users/delete/:id',function (req, res) {
-    let id = req.params.id;
+app.delete('/users/:id',function (req, res) {
+    const id = req.params.id;
     users[id] = null; //deletar item
     return res.json(users[id]);
 })
 
+const builde = {
+    title: "bfsfs"
+}
 app.listen(3000)
